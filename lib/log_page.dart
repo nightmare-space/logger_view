@@ -51,7 +51,6 @@ class _LoggerViewState extends State<LoggerView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 8.w),
         Expanded(
           child: TermareView(
             controller: logTerminalCTL,
