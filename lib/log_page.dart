@@ -22,6 +22,7 @@ class _LoggerViewState extends State<LoggerView> {
   @override
   void initState() {
     super.initState();
+    onChange();
   }
 
   void onChange() {
