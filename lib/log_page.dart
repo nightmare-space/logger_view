@@ -143,7 +143,7 @@ class CheckContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: value
                 ? Theme.of(context).primaryColor
-                : Theme.of(context).primaryColor,
+                : Theme.of(context).scaffoldBackgroundColor,
             borderRadius: BorderRadius.circular(8.w),
           ),
           child: Center(
