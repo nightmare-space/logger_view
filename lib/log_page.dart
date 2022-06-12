@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart' hide ScreenType;
 import 'package:global_repository/global_repository.dart';
-import 'package:termare_view/termare_view.dart';
-
-import 'logger_view.dart';
+import 'package:xterm/next/terminal.dart';
+import 'xterm_wrapper.dart';
 
 class LoggerView extends StatefulWidget {
   const LoggerView({Key? key}) : super(key: key);
@@ -18,6 +16,7 @@ class _LoggerViewState extends State<LoggerView> {
   bool info = true;
   bool warning = true;
   bool error = true;
+  Terminal terminal = Terminal();
 
   @override
   void initState() {
@@ -26,24 +25,26 @@ class _LoggerViewState extends State<LoggerView> {
   }
 
   void onChange() {
-    logTerminalCTL.clear();
+    terminal.eraseDisplay();
+    terminal.eraseScrollbackOnly();
+    terminal.setCursor(0, 0);
     for (var v in Log.buffer) {
       final String data =
           '[${twoDigits(v.time.hour)}:${twoDigits(v.time.minute)}:${twoDigits(v.time.second)}] ${v.data}';
       if (v.level == LogLevel.verbose && verbose) {
-        logTerminalCTL.write(data + "\r\n");
+        terminal.write(data + "\r\n");
       }
       if (v.level == LogLevel.debug && debug) {
-        logTerminalCTL.write(data + "\r\n");
+        terminal.write(data + "\r\n");
       }
       if (v.level == LogLevel.info && info) {
-        logTerminalCTL.write(data + "\r\n");
+        terminal.write(data + "\r\n");
       }
       if (v.level == LogLevel.warning && warning) {
-        logTerminalCTL.write(data + "\r\n");
+        terminal.write(data + "\r\n");
       }
       if (v.level == LogLevel.error && error) {
-        logTerminalCTL.write(data + "\r\n");
+        terminal.write(data + "\r\n");
       }
     }
   }
@@ -53,8 +54,8 @@ class _LoggerViewState extends State<LoggerView> {
     return Column(
       children: [
         Expanded(
-          child: TermareView(
-            controller: logTerminalCTL,
+          child: XTermWrapper(
+            terminal: terminal,
           ),
         ),
         SizedBox(height: 8.w),
@@ -141,9 +142,8 @@ class CheckContainer extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
-            color: value
-                ? Theme.of(context).primaryColor
-                : Colors.grey.shade200,
+            color:
+                value ? Theme.of(context).primaryColor : Colors.grey.shade200,
             borderRadius: BorderRadius.circular(8.w),
           ),
           child: Center(

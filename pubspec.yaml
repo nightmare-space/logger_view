@@ -12,8 +12,10 @@ dependencies:
     sdk: flutter
   global_repository:
     git: https://github.com/nightmare-space/global_repository
-  termare_view:
-    git: https://github.com/Termare/termare_view
+  xterm:
+    git:
+      url: https://github.com/mengyanshou/xterm.dart
+      ref: v3
     
 dev_dependencies:
   flutter_test:
