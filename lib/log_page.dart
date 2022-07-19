@@ -21,7 +21,9 @@ class _LoggerViewState extends State<LoggerView> {
   @override
   void initState() {
     super.initState();
-    onChange();
+    Future.delayed(const Duration(milliseconds: 100), () {
+      onChange();
+    });
   }
 
   void onChange() {
