@@ -53,64 +53,70 @@ class _LoggerViewState extends State<LoggerView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: XTermWrapper(
-            terminal: terminal,
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('日志'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: XTermWrapper(
+              terminal: terminal,
+            ),
           ),
-        ),
-        SizedBox(height: 8.w),
-        WrapContainerList(
-          children: [
-            CheckContainer(
-              value: verbose,
-              data: 'verbose',
-              onChanged: (value) {
-                verbose = value;
-                setState(() {});
-                onChange();
-              },
-            ),
-            CheckContainer(
-              value: debug,
-              data: 'debug',
-              onChanged: (value) {
-                debug = value;
-                setState(() {});
-                onChange();
-              },
-            ),
-            CheckContainer(
-              value: info,
-              data: 'info',
-              onChanged: (value) {
-                info = value;
-                setState(() {});
-                onChange();
-              },
-            ),
-            CheckContainer(
-              value: warning,
-              data: 'warning',
-              onChanged: (value) {
-                warning = value;
-                setState(() {});
-                onChange();
-              },
-            ),
-            CheckContainer(
-              value: error,
-              data: 'error',
-              onChanged: (value) {
-                error = value;
-                setState(() {});
-                onChange();
-              },
-            ),
-          ],
-        ),
-      ],
+          SizedBox(height: 8.w),
+          WrapContainerList(
+            children: [
+              CheckContainer(
+                value: verbose,
+                data: 'verbose',
+                onChanged: (value) {
+                  verbose = value;
+                  setState(() {});
+                  onChange();
+                },
+              ),
+              CheckContainer(
+                value: debug,
+                data: 'debug',
+                onChanged: (value) {
+                  debug = value;
+                  setState(() {});
+                  onChange();
+                },
+              ),
+              CheckContainer(
+                value: info,
+                data: 'info',
+                onChanged: (value) {
+                  info = value;
+                  setState(() {});
+                  onChange();
+                },
+              ),
+              CheckContainer(
+                value: warning,
+                data: 'warning',
+                onChanged: (value) {
+                  warning = value;
+                  setState(() {});
+                  onChange();
+                },
+              ),
+              CheckContainer(
+                value: error,
+                data: 'error',
+                onChanged: (value) {
+                  error = value;
+                  setState(() {});
+                  onChange();
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
