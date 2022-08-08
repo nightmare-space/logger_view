@@ -54,10 +54,6 @@ class _LoggerViewState extends State<LoggerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('日志'),
-      ),
       body: Column(
         children: [
           Expanded(
