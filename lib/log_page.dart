@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:global_repository/global_repository.dart';
-import 'package:xterm/next/terminal.dart';
+import 'package:xterm/xterm.dart';
 import 'xterm_wrapper.dart';
 
 class LoggerView extends StatefulWidget {

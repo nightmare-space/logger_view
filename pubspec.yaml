@@ -14,8 +14,7 @@ dependencies:
     git: https://github.com/nightmare-space/global_repository
   xterm:
     git:
-      url: https://github.com/mengyanshou/xterm.dart
-      ref: v3
+      url: https://github.com/TerminalStudio/xterm.dart
     
 dev_dependencies:
   flutter_test:
