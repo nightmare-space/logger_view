@@ -15,6 +15,7 @@ dependencies:
   xterm:
     git:
       url: https://github.com/TerminalStudio/xterm.dart
+      ref: master
     
 dev_dependencies:
   flutter_test:
