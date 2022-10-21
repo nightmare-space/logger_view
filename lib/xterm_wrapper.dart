@@ -21,12 +21,17 @@ class _XTermWrapperState extends State<XTermWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return TerminalView(
-      widget.terminal,
-      backgroundOpacity: 0,
-      keyboardType: TextInputType.text,
-      textStyle: const TerminalStyle(fontSize: 12),
-      theme: Platform.isAndroid ? android : theme,
+    return ScrollConfiguration(
+      behavior: const ScrollBehavior().copyWith(
+        physics: const BouncingScrollPhysics(),
+      ),
+      child: TerminalView(
+        widget.terminal,
+        backgroundOpacity: 0,
+        keyboardType: TextInputType.text,
+        textStyle: const TerminalStyle(fontSize: 12),
+        theme: Platform.isAndroid ? android : theme,
+      ),
     );
   }
 }
