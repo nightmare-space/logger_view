@@ -31,8 +31,7 @@ class _LoggerViewState extends State<LoggerView> {
     terminal.eraseScrollbackOnly();
     terminal.setCursor(0, 0);
     for (var v in Log.buffer) {
-      final String data =
-          '[${twoDigits(v.time.hour)}:${twoDigits(v.time.minute)}:${twoDigits(v.time.second)}] ${v.data}';
+      final String data = v.data;
       if (v.level == LogLevel.verbose && verbose) {
         terminal.write(data + "\r\n");
       }
@@ -146,8 +145,7 @@ class CheckContainer extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
-            color:
-                value ? Theme.of(context).primaryColor : Colors.grey.shade200,
+            color: value ? Theme.of(context).primaryColor : Colors.grey.shade200,
             borderRadius: BorderRadius.circular(8.w),
           ),
           child: Center(
@@ -156,9 +154,7 @@ class CheckContainer extends StatelessWidget {
               child: Text(
                 data,
                 style: TextStyle(
-                  color: value
-                      ? Colors.white
-                      : Theme.of(context).textTheme.bodyText2?.color,
+                  color: value ? Colors.white : Theme.of(context).textTheme.bodyText2?.color,
                 ),
               ),
             ),
