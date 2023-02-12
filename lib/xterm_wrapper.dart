@@ -28,6 +28,7 @@ class _XTermWrapperState extends State<XTermWrapper> {
       child: TerminalView(
         widget.terminal,
         backgroundOpacity: 0,
+        readOnly: true,
         keyboardType: TextInputType.text,
         textStyle: const TerminalStyle(fontSize: 12),
         theme: Platform.isAndroid ? android : theme,
